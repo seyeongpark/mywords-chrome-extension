@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    min-width: 400px;
+    min-width: 500px;
 }
 
 .input-word {
@@ -37,3 +37,6 @@ button {
     font-weight: bold;
 }
 
+.des-el{
+    width: 500px;
+}

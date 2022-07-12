@@ -55,9 +55,6 @@ function render(words) {
             <td id="word-el">${words[i].word}</td>
             <td id="word-cls-el">${words[i].class}</td>
             <td id="des-el">${words[i].description}</td>
-            <td>
-                <button onclick="removeItem()">Remove</button>
-            </td>
         </tr>
         `
     }
