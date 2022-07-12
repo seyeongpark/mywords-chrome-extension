@@ -35,10 +35,6 @@ saveBtn.addEventListener("click", function () {
     render(myWords)
 });
 
-// removeBtn.addEventListener("click", function () {
-//     console.log("hello")
-// });
-
 function removeItem (num) {
     myWords.splice(num, 1);
     localStorage.setItem("myWords", JSON.stringify(myWords))

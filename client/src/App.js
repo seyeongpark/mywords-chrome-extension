@@ -19,30 +19,32 @@ function App() {
   },[])
 
   const saveWord = async () => {
-    if(setWord){
-      const obj= {
+    if(word){
+      const obj= await {
         word: word,
         class: wordClass,
         description: description
       }
-      myWords.push({obj})
-
-    setMyWords([...myWords, obj]) 
+    myWords.push(obj)
+      
+    setMyWords([...myWords ,{obj}]) 
+    localStorage.setItem("myWords", JSON.stringify(myWords))
+    window.location.reload();
 
     setWord("");
-    setWordClass("");
+    setWordClass("noun");
     setDescription("");
-
-    localStorage.setItem("myWords", JSON.stringify(myWords))
+    
     console.log(obj)
     }
   }
 
-//   const removeItem = async (num) => {
-//     myWords.splice(num, 1);
-//     localStorage.setItem("myWords", JSON.stringify(myWords))
-//     setMyWords(myWords)
-// }
+  const removeItem = async (num) => {
+    myWords.splice(num, 1);
+    localStorage.setItem("myWords", JSON.stringify(myWords))
+    setMyWords(myWords)
+    // window.location.reload();
+}
 
   return (
     <div className="App">
@@ -73,12 +75,12 @@ function App() {
                     {
                       myWords && myWords.map((myWord) =>
                       <tr>
-                        <th scope="row" key={myWord.id}></th>
+                        <th scope="row" key={myWord.id}>{myWords.indexOf(myWord)+1}</th>
                         <td className='word-el' key={myWord.id}>{myWord.word}</td>
                         <td className="word-cls-el" key={myWord.id}>{myWord.class}</td>
                         <td className="des-el" key={myWord.id}>{myWord.description}</td>
                         <td>
-                            <button id="remove-btn">Remove</button>
+                            <button id="remove-btn" onClick={()=> removeItem(myWords.indexOf(myWord))}>Remove</button>
                         </td>
                       </tr>)
                     }
@@ -90,3 +92,5 @@ function App() {
 }
 
 export default App;
+
+// onClick={removeItem(myWord.id)}
